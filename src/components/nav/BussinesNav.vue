@@ -1,11 +1,21 @@
 <template>
   <div class="nav-wraper">
     <div class="nav-select">
-      <button @click="curentNav = navItems.microBiz.list">Малый бизнес</button>
-      <button @click="curentNav = navItems.macroBiz.list">Средний и крупный бизнес</button>
+      <button
+        :class="curentNav.id == 'micro' ? 'selected' : ''"
+        @click="curentNav = navItems.microBiz"
+      >
+        Малый бизнес
+      </button>
+      <button
+        :class="curentNav.id == 'macro' ? 'selected' : ''"
+        @click="curentNav = navItems.macroBiz"
+      >
+        Средний и крупный бизнес
+      </button>
     </div>
     <div class="nav-main">
-      <div v-for="column in curentNav" :key="column.title" class="nav-column">
+      <div v-for="column in curentNav.list" :key="column.title" class="nav-column">
         <RouterLink :to="column.link" class="title">{{ column.title }} </RouterLink>
         <div v-for="item in column.items" :key="item.label" class="nav-item">
           <RouterLink :to="item.link" class="link"> {{ item.label }} </RouterLink>
@@ -20,6 +30,7 @@ import { ref } from 'vue'
 
 const navItems = {
   microBiz: {
+    id: 'micro',
     list: [
       {
         title: 'Всё для малого бизнеса',
@@ -145,6 +156,7 @@ const navItems = {
     ],
   },
   macroBiz: {
+    id: 'macro',
     list: [
       {
         title: 'Всё для среднего бизнеса',
@@ -255,7 +267,7 @@ const navItems = {
     ],
   },
 }
-const curentNav = ref(navItems.microBiz.list)
+const curentNav = ref(navItems.microBiz)
 </script>
 
 <style scoped>
@@ -263,18 +275,29 @@ const curentNav = ref(navItems.microBiz.list)
   background: #21a038;
   background: linear-gradient(180deg, rgba(33, 160, 56, 1) 0%, rgba(157, 199, 73, 1) 100%);
   border-radius: 32px;
-  padding: 28px 58px;
+  padding: 28px 28px;
   display: flex;
   color: #fff;
-  width: 920px;
+  width: 1000px;
   margin: 0 auto;
-  max-height: 470px;
+  max-height: 400px;
 }
 .nav-select {
   border-right: 1px solid #fff;
   display: flex;
   flex-direction: column;
   width: fit-content;
+  max-width: 130px;
+  gap: 48px;
+}
+.nav-select button {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: start;
+  margin-right: 4px;
+}
+.nav-select .selected {
+  border-right: 1px solid #fff;
 }
 .nav-main {
   display: flex;
@@ -292,6 +315,8 @@ const curentNav = ref(navItems.microBiz.list)
   color: #fff;
   font-size: 15px;
   font-weight: 300;
+  word-break: break-all;
+  width: fit-content;
 }
 .title {
   font-weight: 700;

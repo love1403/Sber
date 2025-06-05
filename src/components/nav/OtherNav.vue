@@ -1,177 +1,123 @@
 <template>
   <div class="nav-wraper">
-    <div class="column" v-for="(column, index) in navColumns" :key="index">
-      <p class="column-title">{{ column.title }}</p>
-      <div class="column-list">
-        <router-link
-          class="list-item"
-          v-for="item in column.items"
-          :key="item.label"
-          :to="item.link"
-        >
-          {{ item.label }}
-        </router-link>
+    <div class="nav-main">
+      <div v-for="column in navList" :key="column.title" class="nav-column">
+        <RouterLink :to="column.link" class="title">{{ column.title }} </RouterLink>
+        <div v-for="item in column.items" :key="item.label" class="nav-item">
+          <RouterLink :to="item.link" class="link"> {{ item.label }} </RouterLink>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const navColumns = [
+import { ref } from 'vue'
+
+const navList = [
   {
-    title: 'Банк',
+    title: 'Полезное',
+    link: '/',
     items: [
       {
-        label: 'Кредитные карты',
+        label: 'Курсы валют',
         link: '/',
       },
       {
-        label: 'Дебетовые карты',
+        label: 'Банкоматы ',
         link: '/',
       },
       {
-        label: 'Кредиты и ипотека',
+        label: 'Сбер‑Pay',
         link: '/',
       },
       {
-        label: 'Детская карта',
+        label: 'Платежи',
         link: '/',
       },
       {
-        label: 'Пенсионная карта',
+        label: 'Контакты',
         link: '/',
       },
       {
-        label: 'Вклады',
+        label: 'Приложения',
         link: '/',
       },
       {
-        label: 'Накопительный счет',
-        link: '/',
-      },
-      {
-        label: 'Подписка ',
-        link: '/',
-      },
-      {
-        label: 'Рассрочка',
-        link: '/',
-      },
-      {
-        label: 'Ипотека',
-        link: '/',
-      },
-      {
-        label: 'Самозанятость',
+        label: 'Спасибо от СберБанка',
         link: '/',
       },
     ],
   },
-
   {
-    title: 'Инвестиции',
+    title: 'Вакансии',
+    link: '/',
     items: [
       {
-        label: 'Брокерский счет',
+        label: 'Работа в IТ',
         link: '/',
       },
       {
-        label: 'ИИС',
+        label: 'Бизнес и процессы',
         link: '/',
       },
       {
-        label: 'Каталог бумаг',
-        link: '/',
-      },
-      {
-        label: 'Пульс',
-        link: '/',
-      },
-      {
-        label: 'Аналитика',
-        link: '/',
-      },
-      {
-        label: 'Академия',
-        link: '/',
-      },
-      {
-        label: 'Терминал',
+        label: 'Работа с клиентами',
         link: '/',
       },
     ],
   },
-
   {
-    title: 'Мобильная связь',
+    title: 'Отзывы',
+    link: '/',
     items: [
       {
-        label: 'Тарифы',
+        label: 'Обзор',
         link: '/',
       },
       {
-        label: 'Пластиковая симка',
+        label: 'Отзывы о компаниях',
         link: '/',
       },
       {
-        label: 'Электронная симка',
-        link: '/',
-      },
-      {
-        label: 'Красивые номера',
-        link: '/',
-      },
-      {
-        label: 'Услуги',
-        link: '/',
-      },
-      {
-        label: 'Перенос номера',
-        link: '/',
-      },
-      {
-        label: 'Роуминг',
-        link: '/',
-      },
-      {
-        label: 'Помощь',
+        label: 'Отзывы о СберБанке',
         link: '/',
       },
     ],
   },
-
   {
-    title: 'Страхование',
+    title: 'Мерч СберБанка',
+    link: '/',
     items: [
       {
-        label: 'ОСАГО',
+        label: 'Одежда',
         link: '/',
       },
       {
-        label: 'Каско',
-        link: '/',
-      },
-      {
-        label: 'Путешествия',
-        link: '/',
-      },
-      {
-        label: 'Ипотека',
-        link: '/',
-      },
-      {
-        label: 'Квартира',
-        link: '/',
-      },
-      {
-        label: 'Здоровье',
-        link: '/',
-      },
-      {
-        label: 'Помощь на дорогах',
+        label: 'Аксессуары',
         link: '/',
       },
     ],
+  },
+  {
+    title: 'Предложения',
+    link: '/',
+    items: [],
+  },
+  {
+    title: 'Информация для партнеров',
+    link: '/',
+    items: [],
+  },
+  {
+    title: 'Поддержка',
+    link: '/',
+    items: [],
+  },
+  {
+    title: 'Поиск по сайту',
+    link: '/',
+    items: [],
   },
 ]
 </script>
@@ -181,27 +127,38 @@ const navColumns = [
   background: #21a038;
   background: linear-gradient(180deg, rgba(33, 160, 56, 1) 0%, rgba(157, 199, 73, 1) 100%);
   border-radius: 32px;
-  padding: 28px 58px;
+  padding: 28px 28px;
   display: flex;
-  justify-content: space-between;
   color: #fff;
   width: 920px;
   margin: 0 auto;
+  height: 470px;
+  align-items: center;
+  justify-content: center;
 }
-.column {
-}
-.column-title {
-  font-weight: 700;
-  margin-bottom: 18px;
-  letter-spacing: 1px;
-}
-.column-list {
+.nav-main {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 18px;
+  max-height: 300px;
 }
-.list-item {
+.nav-column {
+  padding: 0 32px;
+}
+.nav-item {
+  padding: 6px 0;
+}
+.link {
   color: #fff;
-  font-weight: 200;
+  font-size: 15px;
+  font-weight: 300;
+  word-break: break-all;
+  width: fit-content;
+}
+.title {
+  font-weight: 700;
+  padding-bottom: 12px;
+  color: #fff;
 }
 </style>

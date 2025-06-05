@@ -24,7 +24,7 @@ const handleNavEnter = () => {
 const handleNavLeave = () => {
   navTimeout = setTimeout(() => {
     curentNav.value = false
-  }, 500)
+  }, 5000000000)
 }
 onBeforeUnmount(() => {
   if (navTimeout) clearTimeout(navTimeout)

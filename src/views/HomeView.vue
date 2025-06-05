@@ -4,6 +4,7 @@ import PopularSection from '@/components/sections/PopularSection.vue'
 import DeliveryForm from '@/components/sections/DeliveryForm.vue'
 import CurrencySection from '@/components/sections/CurrencySection.vue'
 import ModalLayout from '@/components/layouts/ModalLayout.vue'
+import CalSection from '@/components/sections/CalSection.vue'
 </script>
 
 <template>
@@ -18,6 +19,7 @@ import ModalLayout from '@/components/layouts/ModalLayout.vue'
     </div>
     <PopularSection />
     <DeliveryForm />
+    <CalSection />
     <CurrencySection />
   </PageLayout>
 </template>
