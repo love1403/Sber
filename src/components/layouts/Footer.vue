@@ -1,13 +1,18 @@
-<script setup></script>
+<script setup>
+import SourchBar from './SourchBar.vue'
+</script>
 
 <template>
+  <SourchBar />
   <footer>
     <div class="footer-content">
       <div class="footer-social">
         <div class="social-list">
-          <img src="/images/footer/tg.svg" alt="" />
-          <img src="/images/footer/inst.svg" alt="" />
-          <img src="/images/footer/vk.svg" alt="" />
+          <a href="https://t.me/sberbank"><img src="/images/footer/tg.svg" alt="" /></a>
+          <a href="https://www.instagram.com/sberbank?igsh=MThzdG5wdmtobTNhbg=="
+            ><img src="/images/footer/inst.svg" alt=""
+          /></a>
+          <a href="https://vk.com/sberbank"><img src="/images/footer/vk.svg" alt="" /></a>
           <img src="/images/footer/poisk.svg" alt="" />
           <img src="/images/footer/eye.svg" alt="" />
         </div>

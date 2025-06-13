@@ -20,7 +20,7 @@ import CalSection from '@/components/sections/CalSection.vue'
     <PopularSection />
     <DeliveryForm />
     <CalSection />
-    <CurrencySection />
+    <!-- <CurrencySection /> -->
   </PageLayout>
 </template>
 
