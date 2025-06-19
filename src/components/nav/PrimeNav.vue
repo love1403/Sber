@@ -39,4 +39,25 @@
 a {
   color: #fff;
 }
+
+@media (max-width: 768px) {
+  .nav-wraper {
+    width: 100%;
+    margin: 0;
+    border-radius: 16px;
+    padding: 30px 16px;
+  }
+
+  .nav-buttons h2 {
+    font-size: 24px;
+  }
+
+  .nav-buttons h3 {
+    font-size: 18px;
+  }
+
+  .nav-buttons {
+    gap: 40px;
+  }
+}
 </style>

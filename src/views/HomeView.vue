@@ -15,7 +15,7 @@ import CalSection from '@/components/sections/CalSection.vue'
         мы установим Вам <br />
         приложение
       </div>
-      <img class="img" src="/images/herologo.jpg" alt="" />
+      <img class="img" src="/images/hero/hero.png" alt="" />
     </div>
     <PopularSection />
     <DeliveryForm />
@@ -27,17 +27,23 @@ import CalSection from '@/components/sections/CalSection.vue'
 <style scoped>
 .hero {
   display: flex;
-}
-.hero-title {
-  background: rgb(183, 229, 189);
+  align-items: stretch;
+  justify-content: center;
+  margin-bottom: 40px;
+  min-height: 220px;
   background: linear-gradient(
     90deg,
-    rgba(183, 229, 189, 0.7399334733893557) 14%,
-    rgba(216, 239, 190, 0.7567401960784313) 32%,
-    rgba(244, 247, 188, 0.48503151260504207) 55%,
-    rgba(225, 239, 226, 0.8155637254901961) 82%,
+    rgba(183, 229, 189, 0.74) 14%,
+    rgba(216, 239, 190, 0.76) 32%,
+    rgba(244, 247, 188, 0.49) 55%,
+    rgba(225, 239, 226, 0.82) 82%,
     rgba(218, 236, 238, 1) 100%
   );
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.hero-title {
   font-size: 28px;
   letter-spacing: 4px;
   text-align: center;
@@ -47,8 +53,59 @@ import CalSection from '@/components/sections/CalSection.vue'
   padding: 0 44px;
   width: 100%;
   border-radius: 10px 0 0 10px;
+  min-height: 220px;
+  background: transparent; /* Убрали фон */
 }
+
 .img {
   border-radius: 0 10px 10px 0;
+  width: 260px;
+  object-fit: cover;
+  min-width: 120px;
+}
+
+/* Планшеты */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 160px;
+    margin-bottom: 28px;
+  }
+  .hero-title {
+    font-size: 22px;
+    padding: 0 24px;
+    letter-spacing: 2px;
+    min-height: 160px;
+  }
+  .img {
+    width: 180px;
+    min-width: 80px;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 480px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    min-height: unset;
+    margin-bottom: 18px;
+  }
+  .hero-title {
+    border-radius: 10px 10px 0 0;
+    font-size: 17px;
+    padding: 20px 10px;
+    min-height: unset;
+    width: 100%;
+    letter-spacing: 1px;
+    background: transparent;
+  }
+  .img {
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    min-width: 0;
+    max-width: 340px;
+    margin: 0 auto;
+    display: none;
+  }
 }
 </style>

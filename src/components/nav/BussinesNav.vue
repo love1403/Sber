@@ -1,30 +1,3 @@
-<template>
-  <div class="nav-wraper">
-    <div class="nav-select">
-      <button
-        :class="curentNav.id == 'micro' ? 'selected' : ''"
-        @click="curentNav = navItems.microBiz"
-      >
-        Малый бизнес
-      </button>
-      <button
-        :class="curentNav.id == 'macro' ? 'selected' : ''"
-        @click="curentNav = navItems.macroBiz"
-      >
-        Средний и крупный бизнес
-      </button>
-    </div>
-    <div class="nav-main">
-      <div v-for="column in curentNav.list" :key="column.title" class="nav-column">
-        <RouterLink :to="column.link" class="title">{{ column.title }} </RouterLink>
-        <div v-for="item in column.items" :key="item.label" class="nav-item">
-          <RouterLink :to="item.link" class="link"> {{ item.label }} </RouterLink>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue'
 
@@ -270,6 +243,33 @@ const navItems = {
 const curentNav = ref(navItems.microBiz)
 </script>
 
+<template>
+  <div class="nav-wraper">
+    <div class="nav-select">
+      <button
+        :class="curentNav.id == 'micro' ? 'selected' : ''"
+        @click="curentNav = navItems.microBiz"
+      >
+        Малый бизнес
+      </button>
+      <button
+        :class="curentNav.id == 'macro' ? 'selected' : ''"
+        @click="curentNav = navItems.macroBiz"
+      >
+        Средний и крупный бизнес
+      </button>
+    </div>
+    <div class="nav-main">
+      <div v-for="column in curentNav.list" :key="column.title" class="nav-column">
+        <RouterLink :to="column.link" class="title">{{ column.title }}</RouterLink>
+        <div v-for="item in column.items" :key="item.label" class="nav-item">
+          <RouterLink :to="item.link" class="link">{{ item.label }}</RouterLink>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <style scoped>
 .nav-wraper {
   background: #21a038;
@@ -282,6 +282,7 @@ const curentNav = ref(navItems.microBiz)
   margin: 0 auto;
   max-height: 400px;
 }
+
 .nav-select {
   border-right: 1px solid #fff;
   display: flex;
@@ -290,37 +291,131 @@ const curentNav = ref(navItems.microBiz)
   max-width: 130px;
   gap: 48px;
 }
+
 .nav-select button {
   font-size: 20px;
   font-weight: 700;
   text-align: start;
   margin-right: 4px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 0;
 }
+
 .nav-select .selected {
   border-right: 1px solid #fff;
 }
+
 .nav-main {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   gap: 18px;
 }
+
 .nav-column {
   padding: 0 32px;
 }
+
 .nav-item {
   padding: 6px 0;
 }
+
 .link {
   color: #fff;
   font-size: 15px;
   font-weight: 300;
   word-break: break-all;
   width: fit-content;
+  text-decoration: none;
 }
+
+.link:hover {
+  opacity: 0.8;
+}
+
 .title {
   font-weight: 700;
   padding-bottom: 12px;
   color: #fff;
+  text-decoration: none;
+}
+
+.title:hover {
+  opacity: 0.8;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .nav-wraper {
+    width: 100%;
+    margin: 0;
+    border-radius: 16px;
+    padding: 20px 16px;
+    flex-direction: column;
+    max-height: none;
+  }
+
+  .nav-select {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #fff;
+    flex-direction: row;
+    max-width: none;
+    gap: 16px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  .nav-select button {
+    font-size: 16px;
+    margin-right: 0;
+    text-align: center;
+    flex: 1;
+  }
+
+  .nav-select .selected {
+    border-right: none;
+    border-bottom: 2px solid #fff;
+  }
+
+  .nav-main {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .nav-column {
+    padding: 0 16px 0 0;
+    min-width: 200px;
+  }
+
+  .link {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-wraper {
+    padding: 16px 12px;
+  }
+
+  .nav-select {
+    gap: 12px;
+  }
+
+  .nav-select button {
+    font-size: 14px;
+  }
+
+  .nav-column {
+    padding: 0 12px 0 0;
+    min-width: 180px;
+  }
+
+  .link {
+    font-size: 13px;
+  }
 }
 </style>

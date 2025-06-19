@@ -1,21 +1,3 @@
-<template>
-  <div class="nav-wraper">
-    <div class="column" v-for="(column, index) in navColumns" :key="index">
-      <p class="column-title">{{ column.title }}</p>
-      <div class="column-list">
-        <router-link
-          class="list-item"
-          v-for="item in column.items"
-          :key="item.label"
-          :to="item.link"
-        >
-          {{ item.label }}
-        </router-link>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 const navColumns = [
   {
@@ -176,6 +158,24 @@ const navColumns = [
 ]
 </script>
 
+<template>
+  <div class="nav-wraper">
+    <div class="column" v-for="(column, index) in navColumns" :key="index">
+      <p class="column-title">{{ column.title }}</p>
+      <div class="column-list">
+        <router-link
+          class="list-item"
+          v-for="item in column.items"
+          :key="item.label"
+          :to="item.link"
+        >
+          {{ item.label }}
+        </router-link>
+      </div>
+    </div>
+  </div>
+</template>
+
 <style scoped>
 .nav-wraper {
   background: #21a038;
@@ -188,20 +188,67 @@ const navColumns = [
   width: 920px;
   margin: 0 auto;
 }
-.column {
-}
+
 .column-title {
   font-weight: 700;
   margin-bottom: 18px;
   letter-spacing: 1px;
 }
+
 .column-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
+
 .list-item {
   color: #fff;
   font-weight: 200;
+  text-decoration: none;
+}
+
+.list-item:hover {
+  opacity: 0.8;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .nav-wraper {
+    width: 100%;
+    margin: 0;
+    border-radius: 16px;
+    padding: 20px 16px;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  .column-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .list-item {
+    font-size: 14px;
+    padding: 4px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-wraper {
+    padding: 16px 12px;
+    gap: 20px;
+  }
+
+  .column-title {
+    font-size: 15px;
+  }
+
+  .list-item {
+    font-size: 13px;
+  }
 }
 </style>

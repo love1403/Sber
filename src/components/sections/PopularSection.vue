@@ -102,25 +102,26 @@ const CloseAndroidInstalModal = () => {
   gap: 36px;
   flex-direction: column;
 }
-
 .grid-row {
   width: 100%;
   display: flex;
   gap: 18px;
 }
-
 .grid-item {
   height: 185px;
   background-color: #ffffff;
   border-radius: 10px;
   padding: 18px 12px;
   position: relative;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
-
 .size1 {
   width: 185px;
 }
-
 .size2 {
   width: 285px;
 }
@@ -130,19 +131,20 @@ const CloseAndroidInstalModal = () => {
 .grid-item .title {
   font-size: 24px;
 }
-
 .grid-item .discript {
   font-size: 15px;
   font-weight: 300;
   margin-top: 10px;
   width: 70%;
 }
-
 .grid-item img {
   position: absolute;
   right: 0;
   bottom: 0;
+  max-width: 120px;
+  max-height: 80px;
 }
+
 .install {
   position: absolute;
   background: rgba(33, 160, 56, 0.8);
@@ -163,6 +165,9 @@ const CloseAndroidInstalModal = () => {
   position: absolute;
   right: -25px;
   bottom: 0px;
+  max-width: 160px;
+  width: 100%;
+  height: auto;
 }
 .install-info {
   width: 80%;
@@ -203,5 +208,150 @@ const CloseAndroidInstalModal = () => {
 .qr-android {
   width: 100%;
   padding: 24px;
+}
+
+/* --- Адаптив --- */
+
+/* Планшеты */
+@media (max-width: 768px) {
+  .popular {
+    margin-bottom: 80px;
+  }
+  .popular-title {
+    font-size: 28px;
+    margin: 24px auto;
+  }
+  .popular-content {
+    padding: 30px 12px 30px 12px;
+  }
+  .grid {
+    gap: 24px;
+  }
+  .grid-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .grid-item {
+    width: 100% !important;
+    min-width: 0;
+    height: auto;
+    min-height: 120px;
+    padding: 16px 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .grid-item .title {
+    font-size: 18px;
+  }
+  .grid-item .discript {
+    font-size: 13px;
+    width: 100%;
+  }
+  .grid-item img {
+    position: static !important;
+    max-width: 90px;
+    max-height: 60px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    display: block;
+    right: auto;
+    bottom: auto;
+  }
+  .install {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 32px auto 0 auto;
+    left: auto;
+    transform: none;
+    box-shadow: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 10px;
+    border-radius: 14px;
+  }
+  .install img {
+    display: none;
+  }
+  .install-info {
+    width: 100%;
+    padding: 0;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+  }
+  .install-info h3 {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  .install-info p {
+    font-size: 12px;
+  }
+  .install-buttons {
+    justify-content: center;
+    gap: 12px;
+  }
+  .install-buttons button {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 480px) {
+  .popular {
+    margin-bottom: 48px;
+  }
+  .popular-title {
+    font-size: 20px;
+    margin: 18px auto;
+  }
+  .popular-content {
+    padding: 18px 4px 18px 4px;
+  }
+  .grid {
+    gap: 14px;
+  }
+  .grid-row {
+    gap: 10px;
+  }
+  .grid-item {
+    padding: 10px 6px;
+    min-height: 80px;
+  }
+  .grid-item .title {
+    font-size: 15px;
+  }
+  .grid-item .discript {
+    font-size: 11px;
+  }
+  .grid-item img {
+    max-width: 60px;
+    max-height: 40px;
+    margin-top: 6px;
+  }
+  .install {
+    padding: 10px 4px;
+    margin-top: 18px;
+    border-radius: 8px;
+  }
+  .install img {
+    width: 70px;
+    margin-top: 8px;
+  }
+  .install-info h3 {
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  .install-info p {
+    font-size: 10px;
+  }
+  .install-buttons button {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
 }
 </style>

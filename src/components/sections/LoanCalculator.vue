@@ -73,7 +73,7 @@
         <div class="payment-amount">
           {{ formatCurrency(monthlyPayment) }}
         </div>
-        <button class="submit-btn" @click="submitApplication">Подать заявку</button>
+        <button class="submit-btn" @click="emit('submit')">Подать заявку</button>
       </div>
     </div>
   </div>
@@ -91,6 +91,8 @@ const props = defineProps({
   minTerm: { type: Number, default: 3 },
   maxTerm: { type: Number, default: 60 },
 })
+
+const emit = defineEmits(['submit'])
 
 const stepAmount = 10000
 const stepTerm = 1
@@ -276,14 +278,75 @@ const submitApplication = () => {
 .submit-btn:hover {
   background: #21a038;
 }
+
+/* Планшетная версия (768px) */
 @media (max-width: 768px) {
   .loan-calculator {
     flex-direction: column;
-    padding: 1rem;
+    padding: 1.5rem;
+    gap: 1.5rem;
   }
   .payment-info {
     flex: none;
+    margin-top: 0;
+    width: 100%;
+  }
+  .payment-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .input-with-range {
+    gap: 0.8rem;
+  }
+}
+
+/* Мобильная версия (480px) */
+@media (max-width: 480px) {
+  .loan-calculator {
+    padding: 1rem;
+    border-radius: 0.8rem;
+  }
+  .calculator-form {
+    padding: 1rem 0.8rem 0 0.8rem;
+  }
+  .calculator-form h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+  .input-with-range {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+  .manual-input {
+    width: 100%;
+  }
+  .input-hints {
+    font-size: 0.85rem;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .disclaimer {
+    font-size: 0.75rem;
     margin-top: 1.5rem;
+  }
+  .payment-card {
+    padding: 1.2rem 0.8rem;
+  }
+  .payment-label {
+    font-size: 0.95rem;
+  }
+  .payment-amount {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 0.8rem;
   }
 }
 </style>

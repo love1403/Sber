@@ -1,16 +1,3 @@
-<template>
-  <div class="nav-wraper">
-    <div class="nav-main">
-      <div v-for="column in navList" :key="column.title" class="nav-column">
-        <RouterLink :to="column.link" class="title">{{ column.title }} </RouterLink>
-        <div v-for="item in column.items" :key="item.label" class="nav-item">
-          <RouterLink :to="item.link" class="link"> {{ item.label }} </RouterLink>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue'
 
@@ -122,6 +109,19 @@ const navList = [
 ]
 </script>
 
+<template>
+  <div class="nav-wraper">
+    <div class="nav-main">
+      <div v-for="column in navList" :key="column.title" class="nav-column">
+        <RouterLink :to="column.link" class="title">{{ column.title }} </RouterLink>
+        <div v-for="item in column.items" :key="item.label" class="nav-item">
+          <RouterLink :to="item.link" class="link"> {{ item.label }} </RouterLink>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <style scoped>
 .nav-wraper {
   background: #21a038;
@@ -160,5 +160,30 @@ const navList = [
   font-weight: 700;
   padding-bottom: 12px;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .nav-wraper {
+    width: 100%;
+    margin: 0;
+    border-radius: 16px;
+    padding: 20px 16px;
+    height: auto;
+  }
+
+  .nav-main {
+    max-height: none;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .nav-column {
+    padding: 0 16px 0 0;
+    min-width: 200px;
+  }
+
+  .link {
+    font-size: 14px;
+  }
 }
 </style>

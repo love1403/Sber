@@ -68,7 +68,7 @@
           <span>Ваш доход будет</span>
           <span>{{ formatCurrency(income) }}</span>
         </div>
-        <button class="submit-btn" @click="openDeposit">Открыть вклад</button>
+        <button class="submit-btn" @click="emit('submit')">Открыть вклад</button>
       </div>
     </div>
   </div>
@@ -76,6 +76,8 @@
 
 <script setup>
 import { ref, computed, watch } from 'vue'
+
+const emit = defineEmits(['submit'])
 
 const minDeposit = 100000
 const maxDeposit = 30000000

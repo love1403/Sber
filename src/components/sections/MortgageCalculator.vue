@@ -132,7 +132,7 @@
           <span>Налоговый вычет</span>
           <span>{{ formatCurrency(taxDeduction) }}</span>
         </div>
-        <button class="submit-btn" @click="submitApplication">Заполнить заявку</button>
+        <button class="submit-btn" @click="emit('submit')">Заполнить заявку</button>
       </div>
     </div>
   </div>
@@ -140,6 +140,8 @@
 
 <script setup>
 import { ref, computed, watch } from 'vue'
+
+const emit = defineEmits(['submit'])
 
 const minPropertyPrice = 850000
 const maxPropertyPrice = 87500000
@@ -253,15 +255,11 @@ const submitApplication = () => {
   font-weight: 500;
   color: #444;
 }
-
-/* Контейнер для ручного ввода и ползунка */
 .input-with-range {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-
-/* Ручной ввод */
 .manual-input {
   width: 140px;
   padding: 0.8rem;
@@ -271,8 +269,6 @@ const submitApplication = () => {
   background: #fafafa;
   box-sizing: border-box;
 }
-
-/* Ползунок */
 .range-input {
   flex: 1;
   -webkit-appearance: none;
@@ -312,7 +308,6 @@ const submitApplication = () => {
 .range-input::-moz-range-thumb:hover {
   background: #21a038;
 }
-
 .input-hints {
   display: flex;
   gap: 1.2rem;
@@ -320,15 +315,6 @@ const submitApplication = () => {
   font-size: 0.98rem;
   margin-top: 0.3rem;
   margin-left: 0.1rem;
-}
-.checkbox {
-  display: flex;
-  align-items: center;
-}
-.checkbox label {
-  margin-left: 0.5rem;
-  font-weight: 400;
-  color: #444;
 }
 .disclaimer {
   font-size: 0.83rem;
@@ -384,14 +370,78 @@ const submitApplication = () => {
 .submit-btn:hover {
   background: #21a038;
 }
+
+/* Планшеты */
 @media (max-width: 768px) {
   .loan-calculator {
     flex-direction: column;
-    padding: 1rem;
+    padding: 1.5rem;
+    gap: 1.5rem;
   }
   .payment-info {
     flex: none;
-    margin-top: 1.5rem;
+    margin-top: 0;
+    width: 100%;
+  }
+  .payment-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .input-with-range {
+    gap: 0.8rem;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 480px) {
+  .loan-calculator {
+    padding: 1rem;
+    border-radius: 0.8rem;
+  }
+  .calculator-form {
+    padding: 1rem 0.8rem 0 0.8rem;
+  }
+  .calculator-form h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  .input-with-range {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+  .manual-input {
+    width: 100%;
+  }
+  .input-hints {
+    font-size: 0.85rem;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .disclaimer {
+    font-size: 0.75rem;
+    margin-top: 1.2rem;
+  }
+  .payment-card {
+    padding: 1.2rem 0.8rem;
+  }
+  .offer-title {
+    font-size: 1.05rem;
+  }
+  .offer-row {
+    font-size: 0.98rem;
+  }
+  .payment-amount {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 0.8rem;
   }
 }
 </style>
